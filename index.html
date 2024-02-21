@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Memorization Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Bible Verse of the Day</h1>
+        <p id="verseOfDay"></p>
+        <p id="referenceVerse"></p>
+        <p id="instructionText" class="instruction-text"></p> <!-- Place for instructions -->
+   
+        <button id="hideWordButton" class="customButton">Hide A Word</button>
+        <button id="memorizeButton" class="customButton">Vanishing Words</button>
+        <button id="restartButton" class="hidden">Try Again</button>
+        <button id="startButton" class="customButton">Type The Verse</button>
+
+        <div id="timer" class="hidden"></div>
+        <progress id="progressBar" class="hidden" max="100"></progress>
+        <div id="verseContainer"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

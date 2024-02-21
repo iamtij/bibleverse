@@ -1,0 +1,250 @@
+body,
+html {
+    background-color: var(--bg-color); /* Using a CSS variable for flexibility */
+    color: #ffffff; /* White text for better contrast */
+    font-family: 'Arial', Helvetica, sans-serif; 
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Custom Variables for Easy Theme Changes */
+:root {
+    --bg-color: #6a0dad; /* Main background color */
+    --button-color: #8e24aa; /* Main button color */
+    --button-hover-color: #7b1fa2;
+    --progress-color: #4caf50; /* Green progress bar */
+}
+
+#app {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #ffffff; /* Ensuring the title is clearly visible against the purple background */
+    font-size: 4vh; /* Adjust font size based on the screen size */
+}
+
+#verseContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* This will space out the .wordInput elements evenly */
+    margin-bottom: 20px;
+    font-size: 2.5vh !important;
+}
+
+#verseOfDay,
+#referenceVerse {
+    font-size: 30px; /* Adjust the font size as needed */
+    font-weight: bold; /* More emphasis */
+}
+
+#timer {
+    margin: 10px 0;
+    font-size: 3vh; /* Adjust font size based on the screen size */
+}
+
+/* Progress Bar Styles */
+#progressBar {
+    width: 60%;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+#progressBar::-webkit-progress-value {
+    background-color: var(--progress-color);
+    border-radius: 10px;
+}
+
+#progressBar::-moz-progress-bar {
+    background-color: var(--progress-color); /* Green progress bar for Mozilla */
+    border-radius: 10px;
+}
+
+.wordInput {
+    margin: 5px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #FFF; /* White background for inputs to ensure readability */
+    color: #000; /* Black text */
+    flex: 1 1 calc(25% - 10px); /* Adjust the base width for 4 columns on desktop */
+}
+
+.wordInput.correct {
+    border-color: var(--progress-color); /* Green for correct words */
+}
+
+.wordInput.incorrect {
+    border-color: #f44336; /* Red for incorrect words */
+}
+
+#scoreSummary {
+    background-color: #333; /* Dark background for contrast */
+    color: #fff; /* White text for readability */
+    padding: 20px;
+    margin-top: 20px; /* Add some space above the scoreboard */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    font-family: 'Courier New', monospace; /* Monospaced font for classic scoreboard feel */
+    text-align: center; /* Center the text */
+}
+
+#scoreSummary h3,
+#scoreSummary p {
+    margin: 10px 0;
+    font-size: 18px; /* Readable font size */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Additional styling for specific elements if needed */
+#scoreSummary .correct-words,
+#scoreSummary .incorrect-words,
+#scoreSummary .total-score {
+    font-weight: bold;
+}
+
+/* Style for the outer container that holds the underline */
+.wordContainer {
+    display: inline-block;
+    margin: 0 5px 15px; /* Space between lines and words */
+    cursor: pointer; /* Indicates clickable words */
+}
+
+.wordContainer::after {
+    content: '';
+    display: block;
+    margin-top: 5px; /* Space between the word and the underline */
+    border-bottom: 1px solid #FFFFFF; /* White underline for contrast */
+}
+
+/* Style for the wordSpan that will fade out */
+.wordSpan {
+    display: inline; 
+    padding-bottom: 1px; 
+    position: relative;
+    white-space: nowrap; 
+}
+
+/* Keyframes and class for fade-out effect remain the same */
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+/* Button Styles */
+.customButton {
+    background-color: var(--button-color); /* Main button color */
+    color: #ffffff; /* White text */
+    padding: 10px 20px;
+    font-size: 18px; /* Larger font size for better visibility */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* Ensures buttons are stacked vertically */
+    margin: 10px auto; /* Centers buttons horizontally */
+    width: 80%; /* Adjusted width for better mobile aesthetics */
+    box-sizing: border-box; /* Ensures padding is included in width calculations */
+}
+
+.customButton:hover {
+    background-color: var(--button-hover-color);
+}
+
+.memorizeButton { /* Specific styles for Memorize button */
+    background-color: var(--button-color);
+    color: #FFFFFF;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+}
+
+.memorizeButton:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Instruction Text: More Subdued Styling */
+.instruction-text {
+    color: #333; 
+    background-color: #ffffe0; /* A softer, subtle highlight */
+    margin: 20px auto;
+    font-size: 14px; 
+    text-align: center;
+    padding: 10px; 
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+    width: 90%; 
+    display: none; 
+    max-width: 400px; 
+}
+
+/* Additional style to indicate the hidden state of the arrangeContainer */
+.hidden {
+    display: none; /* Ensures the container is hidden when not in use */
+}
+
+/* Media Queries */
+@media (max-width: 768px) { /* Adjusted for larger mobile devices */
+    .wordInput {
+        /* Adjust for 3 columns on larger mobile devices */
+        flex: 1 1 calc(33.333% - 10px); /* Ensure 3 columns layout */
+        font-size: 20px; /* Increased font size for better readability */
+        padding: 12px; /* Slightly larger padding for easier interaction */
+    }
+
+    .customButton {
+        font-size: 20px; /* Adjusted for readability on mobile devices */
+        padding: 15px 0; /* Increased vertical padding for better touch targets */
+        /* The margin and width settings from the .button class already center and size the buttons appropriately */
+    }
+
+    /* Additional adjustments for larger mobile screens */
+    body,
+    html {
+        font-size: 20px; /* Increase base font size for better readability */
+    }
+
+    h1 {
+        font-size: 3vh; /* Increase for better visibility */
+    }
+
+    #verseContainer,
+    #verseReference {
+        font-size: 3vh; /* Increase verse font size for better readability */
+    }
+
+   #verseOfDay, #referenceVerse {
+        font-size: 3vh; /* Increase verse font size for better readability */
+   }
+
+    #timer {
+        font-size: 3vh; /* Increase font size for better visibility */
+    }
+
+    #progressBar {
+        width: 80%; /* Adjusted width for better mobile aesthetics */
+    }
+
+    #scoreSummary {
+        font-size: 16px; /* Adjusted font size for better readability */
+    }
+
+    .instruction-text {
+        font-size: 16px; /* Adjusted font size for better readability */
+    }
+   }
